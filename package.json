@@ -20,7 +20,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@thyme-labs/cli": "0.12.0",
+    "@thyme-labs/cli": "0.12.1",
     "typescript": "5.9.3"
   },
   "engines": {

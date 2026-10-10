@@ -192,8 +192,10 @@ The contract of a task:
 - Keep work bounded. A cloud run has about 30 seconds per invocation.
 - There is no on-chain event trigger. Poll from the task and keep a cursor in
   `ctx.storage`.
-- Roles profiles currently submit **one call per run**. Split larger work
-  across runs.
+- A run can return up to 32 calls. A Roles profile sends them as **one
+  atomic batch**: if any call reverts, none of them apply. Every call must be
+  on the profile's allowlist, and the batch must stay under about 36 KiB of
+  calldata. Split larger work across runs.
 
 ## Run locally
 
