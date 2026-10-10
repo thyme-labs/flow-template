@@ -1,0 +1,32 @@
+name: Upload function
+
+# Run from the Actions tab. Needs the THYME_AUTH_TOKEN secret (Console -> API Keys)
+# and the THYME_WORKSPACE_ID and THYME_PROJECT_ID repository variables.
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: Task folder name in functions/
+        required: true
+      tag:
+        description: New immutable version tag, such as v2
+        required: true
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run typecheck
+      - name: Upload
+        env:
+          THYME_AUTH_TOKEN: ${{ secrets.THYME_AUTH_TOKEN }}
+          TASK: ${{ inputs.task }}
+          TAG: ${{ inputs.tag }}
+          WORKSPACE: ${{ vars.THYME_WORKSPACE_ID }}
+          PROJECT: ${{ vars.THYME_PROJECT_ID }}
+        run: npx thyme upload "$TASK" --workspace "$WORKSPACE" --project "$PROJECT" --tag "$TAG" --ci

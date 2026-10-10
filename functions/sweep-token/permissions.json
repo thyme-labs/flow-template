@@ -1,0 +1,8 @@
+{
+  "calls": [
+    {
+      "target": { "arg": "token" },
+      "function": "transfer(address,uint256)"
+    }
+  ]
+}

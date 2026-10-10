@@ -1,0 +1,29 @@
+{
+  "name": "flow-template",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "Starter template for Thyme Flow tasks, ready for coding agents.",
+  "scripts": {
+    "thyme": "thyme",
+    "new": "thyme new",
+    "dev": "thyme run",
+    "simulate": "thyme run --simulate",
+    "upload": "thyme upload",
+    "login": "thyme login",
+    "typecheck": "tsc --noEmit",
+    "skill:update": "node scripts/update-skill.mjs"
+  },
+  "dependencies": {
+    "@thyme-labs/sdk": "0.8.0",
+    "viem": "2.46.3",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@thyme-labs/cli": "0.12.0",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
