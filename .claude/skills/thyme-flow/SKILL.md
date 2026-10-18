@@ -422,6 +422,22 @@ thyme profiles rename PROFILE_ID --name "Treasury"
 - `No API credential found`: run the management login above.
 - Requests reaching the wrong environment: check `thyme api-url`.
 
+## Migrating from another service
+
+If the repository uses a service that has shut down or that the user wants to
+leave, read the matching skill before porting anything. Each one lists what to
+look for, how the code translates, and what needs the user's decision.
+
+| Coming from | Signs in the repository | Skill |
+|---|---|---|
+| Gelato Web3 Functions or Automate | `@gelatonetwork/web3-functions-sdk`, `Web3Function.onRun`, `w3f deploy`, `dedicatedMsgSender` | `/docs/skills/thyme-migrate-gelato/SKILL.md` |
+| Chainlink Automation (Keepers) | `checkUpkeep` / `performUpkeep`, `AutomationCompatibleInterface`, `CronUpkeep`, `checkLog` | `/docs/skills/thyme-migrate-chainlink/SKILL.md` |
+| Goldsky or Alchemy Subgraphs (to Thyme Atlas) | `goldsky subgraph deploy`, `api.goldsky.com` endpoints | `/docs/skills/thyme-migrate-goldsky/SKILL.md` |
+
+The paths are on the same docs host as this file, for example
+`https://flow.thymelabs.io/docs/skills/thyme-migrate-gelato/SKILL.md`. If you
+support skills, save each one you use under its `name`.
+
 ## More detail
 
 Full documentation is served under `/docs` on the same host as the user's Flow
